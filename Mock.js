@@ -1,4 +1,4 @@
-class MockData  {
+class Mock  {
     constructor(argArr, argCnt) {
         let cnt = argArr.length + ""	
     
@@ -18,25 +18,30 @@ class MockData  {
             {"city":"Mariehamn","state":"FIN","country":"Aland Islands","areacode":"058","code":"ax"},
             {"city":"Memphis","state":"TN","country":"USA","areacode":"901","code":"us"}
         ]
-            
+        
+        let avatar = 129408
+        let car = 128656
+        
         const randomDate = function( start, end ) {
-                return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+                return new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()))
         }
         
-        let json = [];
-        let obj;
+        let json = []
+        let obj
         for (let i=0;i<argCnt;i++) {
             obj={}
-            let x = parseInt(Math.random()*1000, 1000)
-            obj.fname = fname[x]
-            obj.sex = (x % 2) ? 'M' : 'F'
-            obj.lname = lname[x % 2][parseInt(Math.random()*100, 100)];
-            obj.middle = String.fromCharCode(parseInt(Math.random()*10000/26 % 26, 10)+65);
+            let x = parseInt(Math.random()* lname.length)
+            obj.lname = lname[x]
+            obj.sex = (i % 2) ? 'F' : 'M'
+            obj.fname = fname[i % 2][parseInt(Math.random()*1000)]
+            obj.middle = String.fromCharCode(parseInt(Math.random()*10000/26 % 26, 10)+65).toUpperCase()
             obj.userId = (++cnt)
-            obj.user = (obj.fname.substr(0,1)+obj.lname +(obj.userId)).toLowerCase();
-            obj.date = randomDate(new Date(2012, 0, 1), new Date())
+            obj.user = (obj.fname.substr(0,1)+obj.lname +(obj.userId)).toLowerCase()
+            obj.date = randomDate(new Date(2012, 0, 1), new Date()).toString().split('GMT')[0].trim()
             let loc = parseInt(Math.random()*10, 10)
             obj.location =  location[loc]
+            obj.avatar = '&#' + (avatar + parseInt(i % 16))
+            obj.car = '&#' + (car + parseInt(i % 16))
             json.push(obj)
         }
         return json
