@@ -6,7 +6,7 @@ class Mock  {
 
         const model = [
             ["A4", "A6", "A8", "Q5", "Q7", "R8"], 
-            ["911", "Caymen", "Cayenne", "Panamera", "Carrera", "Boxter", "Macan"],
+            ["911", "Caymen", "Cayenne", "Panamera", "Carrera", "Boxter"], 
             ["Escape", "F150", "Focus", "Fusion", "Explorer", "Mustang"],
             ["300C", "450SL", "GLS450", "AMG C63", "SLK", "GLA 250"],
             ["328", "i3", "i8", "X5", "C4", "550"],
@@ -26,6 +26,7 @@ class Mock  {
             let x = parseInt(Math.random()* 10)
             let y = parseInt(Math.random()* 6)
             obj.make = make[x]
+            console.log(model[x], y)
             obj.model = model[x][y]
             obj.price = parseInt(Math.random()*50)*1000 + 5500
             obj.year = parseInt(Math.random()* 10) + 2010
